@@ -1,2 +1,4 @@
 .history/
 *.pyc
+__pypackages__/
+.pytest_cache
