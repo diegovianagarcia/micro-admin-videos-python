@@ -5,7 +5,9 @@ description = ""
 authors = [
     {name = "Diego Garcia", email = "diegovianagarcia@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "djangorestframework>=3.13.1",
+]
 requires-python = ">=3.10.2"
 license = {text = "MIT"}
 [project.optional-dependencies]
@@ -21,3 +23,14 @@ dev = [
 [build-system]
 requires = ["pdm-pep517>=0.12.0"]
 build-backend = "pdm.pep517.api"
+
+[tool.pyright]
+include = ["src"]
+exclude = [
+    "**/__pycache__",
+    "__pypackages__",
+    ".pytest_cache"
+]
+
+
+
