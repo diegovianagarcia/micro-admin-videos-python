@@ -101,7 +101,7 @@ class SearchParams:
 
 
 @dataclass(slots=True, kw_only=True, frozen=True)
-class SearchResult(Generic[ET, Filter]):
+class SearchResult(Generic[ET, Filter]):  # pylint: disable=too-many-instance-attributes
     items: List[ET]
     total: int
     current_page: int
@@ -153,8 +153,7 @@ class InMemoryRepository(RepositoryInterface[ET], ABC):
     def _get(self, entity_id: str) -> ET:
         if entity := next(filter(lambda item: item.id == entity_id, self.items), None):
             return entity
-        else:
-            raise NotFoundExeption(f"Entity not found using ID '{entity_id}'")
+        raise NotFoundExeption(f"Entity not found using ID '{entity_id}'")
 
 
 class InMemorySearchRepository(

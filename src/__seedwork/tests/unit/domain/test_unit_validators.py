@@ -1,9 +1,10 @@
 from dataclasses import fields
 import unittest
 from unittest.mock import MagicMock, PropertyMock, patch
+from rest_framework.serializers import Serializer
+
 from __seedwork.domain.exceptions import ValidationException
 from __seedwork.domain.validators import DRFValidator, ValidatorFieldsInterface, ValidatorRules
-from rest_framework.serializers import Serializer
 
 
 class TestValidatorRulesUnit(unittest.TestCase):

@@ -3,7 +3,6 @@ from dataclasses import dataclass, field
 from typing import Optional
 from __seedwork.domain.entities import Entity
 from __seedwork.domain.exceptions import EntityValidationException
-# from __seedwork.domain.validators import ValidatorRules
 from category.domain.validators import CategoryValidatorFactory
 
 
@@ -12,9 +11,8 @@ class Category(Entity):
     name: str
     description: Optional[str] = None
     is_active:  Optional[bool] = True
-    # pylint: disable=unnecessary-lambda
     created_at: Optional[datetime] = field(
-        default_factory=lambda: datetime.now())
+        default_factory=datetime.now)
 
     def __post_init__(self):
         if not self.created_at:

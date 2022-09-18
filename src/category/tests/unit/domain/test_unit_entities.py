@@ -2,7 +2,6 @@
 from dataclasses import FrozenInstanceError, is_dataclass
 from datetime import datetime
 import unittest
-from unittest import mock
 from unittest.mock import patch
 from category.domain.entities import Category
 

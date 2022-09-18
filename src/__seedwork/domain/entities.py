@@ -1,18 +1,16 @@
 from abc import ABC
-from dataclasses import asdict, dataclass, field
+from dataclasses import Field, asdict, dataclass, field
 from typing import Any
 from __seedwork.domain.value_objects import UniqueEntityId
 
 
 @dataclass(frozen=True, slots=True)
 class Entity(ABC):
-    # pylint: disable=unnecessary-lambda
     unique_entity_id: UniqueEntityId = field(
-        default_factory=lambda: UniqueEntityId())
+        default_factory=UniqueEntityId)
 
-    # pylint: disable=invalid-name
     @property
-    def id(self):
+    def id(self):  # pylint: disable=invalid-name
         return str(self.unique_entity_id)
 
     def to_dict(self):
@@ -24,3 +22,8 @@ class Entity(ABC):
     def _set(self, name: str, value: Any):
         object.__setattr__(self, name, value)
         return self
+
+    @classmethod
+    def get_field(cls, entity_field: str) -> Field:
+        # pylint: disable=no-member
+        return cls.__dataclass_fields__[entity_field]
